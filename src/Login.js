@@ -41,7 +41,7 @@ export default function Login() {
 
   return (
     <div className="login-container">
-      <h1>Login</h1>
+      <h1>Sign in</h1>
       <button className="google-login-btn" onClick={signInWithGoogle}>
         <img src={googleIcon} alt="Google Icon" className="google-icon"></img>
         Sign in with Google

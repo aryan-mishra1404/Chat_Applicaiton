@@ -3,9 +3,18 @@ import "./App.css";
 import ChatScreen from "./components/ChatScreen";
 import SidePanel from "./components/SidePanel";
 import Login from "./Login";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Footer from "./components/Footer.js";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from "react-router-dom";
 import { useAuth } from "./Context/Context";
 import { auth } from "./Firebase";
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import Home from "./components/Home.js";
 
 function App() {
   const { authUser, setUser, isLoggedIn, setIsLoggedIn } = useAuth();
@@ -36,20 +45,32 @@ function App() {
 
   return (
     // <Router>
-    <div className="App">
-      {!isLogIn ? (
-        <Login />
-      ) : (
-        <div className="whatsapp-screen">
-          {/* <h1>Jai Shree Ram🙏</h1> */}
-          <SidePanel />
-          <Routes>
-            <Route path="/" element={<ChatScreen defaultChat />}></Route>
-            <Route path="/ChatRooms/:roomId" element={<ChatScreen />}></Route>
-          </Routes>
-        </div>
-      )}
-    </div>
+    <>
+      <div className="App">
+        {!isLogIn ? (
+          // <Link to="/login">
+          <Login />
+        ) : (
+          //  </Link>
+          <div className="whatsapp-screen">
+            <SidePanel />
+            <Routes>
+              <Route path="/" element={<ChatScreen defaultChat />}></Route>
+              <Route path="/login" element={<Login />}></Route>
+              <Route path="/ChatRooms/:roomId" element={<ChatScreen />}></Route>
+            </Routes>
+          </div>
+        )}
+        <br />
+      </div>
+
+      {/* <Routes>
+        <Route exact path="/Chat_Application" element={<Home />} />
+        <Route exact path="/ChatRooms/:roomId" element={<ChatScreen />} />
+        <Route path="/login" element={<Login />} />
+      </Routes> */}
+      <Footer />
+    </>
     // </Router>
   );
 }

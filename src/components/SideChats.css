@@ -5,7 +5,7 @@
     display: flex;
     align-items: center;
     margin:2% auto;
-    gap: 4%;
+    gap: 4%; z-index: 1001;
 }
 .panel-chats:hover{
     cursor: pointer;
@@ -15,7 +15,19 @@
 .chat-info{
     max-width: 100%;
     color: black;
-    
+   
+}
+.panel-chats .MuiAvatar-root{
+    margin: 0 !important;
+}
+
+@media screen and (max-width:768px) {
+    .panel-chats{
+        margin: 5% auto;
+    }
+    .panel-chats .MuiAvatar-root{
+        margin: auto;
+    }
 }
 .chat-info a{
     color: black;
